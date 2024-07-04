@@ -14,7 +14,7 @@ const previewLinksHandler = async (req, res) => {
   });
   if (!actualUserDetail)
     return res.status(400).json({ message: "An error occured" });
-  res.status(200).json(actualUserDetail);
+  return res.status(200).json(actualUserDetail);
 };
 
 module.exports = {
