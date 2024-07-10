@@ -5,7 +5,7 @@ const port = process.env.PORT || 3500;
 const mongoose = require("mongoose");
 const multer = require("multer");
 const corsOptions = require("./middleware/corsOptions");
-
+require("dotenv").config();
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.static("public"));
@@ -18,7 +18,7 @@ app.use("/userProfileDetails", require("./routes/api/userProfileDetails"));
 
 main().catch((err) => console.log(err));
 async function main() {
-  await mongoose.connect("mongodb://0.0.0.0:27017/test");
+  await mongoose.connect(process.env.DATABASE_URI );
 
   // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
   app.listen(port, () => {
